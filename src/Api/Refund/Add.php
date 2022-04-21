@@ -76,10 +76,6 @@ class Add extends Refund
      * @var \Datetime the currency
      */
     private $_processDate;
-    /**
-     * @var array<mixed>
-     */
-    private array $_products = array();
 
     /**
      * @param int $amount
@@ -202,14 +198,6 @@ class Add extends Refund
     }
 
     /**
-     * @param array $products
-     */
-    public function setProducts(array $products)
-    {
-        $this->_products = $products;
-    }
-
-    /**
      * Get data to send to the api
      *
      * @return array
@@ -272,7 +260,6 @@ class Add extends Refund
         if ($this->_processDate instanceof \Datetime) {
             $this->data['processDate'] = $this->_processDate->format('d-m-Y');
         }
-        $this->data['products'] = $this->_products;
 
         return parent::getData();
     }
